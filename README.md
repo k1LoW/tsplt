@@ -23,6 +23,13 @@ Default delimiter : `\t`
 | `[timestamp format]` | number | number | ... |
 | ... | ... | ... | ... |
 
-## Output image
+### Timestamp format
+
+tsplt parse timestamp using [araddon/dateparse](https://github.com/araddon/dateparse).
+
+## Output plot image
+
+Output plot image of [sample time series tsv](testdata/isucon.tsv).
 
 ![testdata/isucon.png](testdata/isucon.png)
+
