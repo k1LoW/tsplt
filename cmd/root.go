@@ -26,6 +26,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 
 	"github.com/k1LoW/tsplt/protter"
 	"github.com/k1LoW/tsplt/timeseries"
@@ -71,7 +72,7 @@ var rootCmd = &cobra.Command{
 			err error
 		)
 		if inPath != "" {
-			in, err = os.Open(inPath)
+			in, err = os.Open(filepath.Clean(inPath))
 			if err != nil {
 				_, _ = fmt.Fprintf(os.Stderr, "%s\n", err)
 				os.Exit(1)
