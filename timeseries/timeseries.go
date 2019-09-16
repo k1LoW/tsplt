@@ -21,7 +21,7 @@ type Data struct {
 	Points  [][]Point
 }
 
-// Build ...
+// Build plot data
 func Build(in io.Reader, delimiter rune) (*Data, error) {
 	header := false
 	r := csv.NewReader(in)
