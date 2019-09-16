@@ -2,6 +2,16 @@
 
 plot time series data
 
+## Usage
+
+``` console
+$ cat ts.tsv | tsplt -o ts.png
+```
+
+``` console
+$ tsplt -i ts.tsv -o ts.png
+```
+
 ## Input time series data
 
 Default delimiter : `\t`
