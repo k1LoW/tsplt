@@ -26,6 +26,11 @@ func Build(in io.Reader, delimiter rune) (*Data, error) {
 	header := false
 	r := csv.NewReader(in)
 	r.Comma = delimiter
+	loc, err := time.LoadLocation("Local")
+	if err != nil {
+		return nil, err
+	}
+
 	rs, err := r.ReadAll()
 	if err != nil {
 		return nil, err
@@ -60,10 +65,15 @@ func Build(in io.Reader, delimiter rune) (*Data, error) {
 		pts := []Point{}
 		for row := 0; row < dRows; row++ {
 			pt := Point{}
-			t, err := dateparse.ParseAny(rs[sIdx+row][0])
+			layout, err := dateparse.ParseFormat(rs[sIdx+row][0])
 			if err != nil {
 				return nil, err
 			}
+			t, err := time.ParseInLocation(layout, rs[sIdx+row][0], loc)
+			if err != nil {
+				return nil, err
+			}
+
 			v, err := strconv.ParseFloat(rs[sIdx+row][i+1], 64)
 			if err != nil {
 				return nil, err

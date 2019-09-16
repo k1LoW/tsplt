@@ -2,6 +2,7 @@ package protter
 
 import (
 	"image/color"
+	"time"
 
 	"github.com/k1LoW/tsplt/timeseries"
 	"gonum.org/v1/plot"
@@ -20,12 +21,16 @@ var colors = []color.Color{
 	color.RGBA{255, 204, 150, 255}, // #ffcc96
 }
 
-// Plot ...
+// Plot data and save output plot image
 func Plot(data *timeseries.Data, outPath string) error {
 	st := data.Points[0][0].X
 	et := data.Points[0][len(data.Points[0])-1].X
 	pCols := len(data.Points)
 	pRows := len(data.Points[0])
+	loc, err := time.LoadLocation("Local")
+	if err != nil {
+		return err
+	}
 
 	layout := "2006-01-02\n15:04"
 	switch {
@@ -39,7 +44,7 @@ func Plot(data *timeseries.Data, outPath string) error {
 		layout = "04:05"
 	}
 
-	xticks := plot.TimeTicks{Format: layout}
+	xticks := plot.TimeTicks{Format: layout, Time: plot.UnixTimeIn(loc)}
 
 	p, err := plot.New()
 	if err != nil {
