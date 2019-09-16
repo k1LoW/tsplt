@@ -42,7 +42,8 @@ func Build(in io.Reader, delimiter rune) (*Data, error) {
 	}
 
 	dCols := len(rs[0]) - 1
-	dRows := len(rs) - 1
+	dRows := len(rs)
+
 	sIdx := 0
 	xLabel := "time"
 	yLabels := []string{}
@@ -52,7 +53,7 @@ func Build(in io.Reader, delimiter rune) (*Data, error) {
 
 	if header {
 		sIdx = 1
-		dRows = len(rs) - 2
+		dRows = len(rs) - 1
 		if rs[0][0] != "" {
 			xLabel = rs[0][0]
 		}
