@@ -18,14 +18,14 @@ Default delimiter : `\t`
 
 | timestamp | d1 | d2 | ... |
 | --- | --- | --- | --- | 
-| `[timestamp format]` | number | number | ... |
-| `[timestamp format]` | number | number | ... |
-| `[timestamp format]` | number | number | ... |
+| `[timestamp]` | number | number | ... |
+| `[timestamp]` | number | number | ... |
+| `[timestamp]` | number | number | ... |
 | ... | ... | ... | ... |
 
 ### Timestamp format
 
-tsplt parse timestamp using [araddon/dateparse](https://github.com/araddon/dateparse).
+tsplt parse `[timestamp]` using [araddon/dateparse](https://github.com/araddon/dateparse).
 
 ## Output plot image
 
