@@ -33,3 +33,20 @@ Output plot image of [sample time series tsv](testdata/isucon.tsv).
 
 ![testdata/isucon.png](testdata/isucon.png)
 
+## Install
+
+**homebrew tap:**
+
+```console
+$ brew install k1LoW/tap/tsplt
+```
+
+**manually:**
+
+Download binany from [releases page](https://github.com/k1LoW/tsplt/releases)
+
+**go get:**
+
+```console
+$ go get github.com/k1LoW/tsplt
+```
