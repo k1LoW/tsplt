@@ -44,7 +44,7 @@ func Plot(data *timeseries.Data, outPath string) error {
 		layout = "04:05"
 	}
 
-	xticks := plot.TimeTicks{Format: layout, Time: plot.UnixTimeIn(loc)}
+	xticks := plot.TimeTicks{Format: layout, Time: UnixTimeNanoIn(loc)}
 
 	p, err := plot.New()
 	if err != nil {
@@ -57,7 +57,7 @@ func Plot(data *timeseries.Data, outPath string) error {
 		for row := 0; row < pRows; row++ {
 			t := data.Points[i][row].X
 			v := data.Points[i][row].Y
-			pts[row].X = float64(t.Unix())
+			pts[row].X = float64(t.UnixNano())
 			pts[row].Y = v
 		}
 		line, points, err := plotter.NewLinePoints(pts)
@@ -78,6 +78,12 @@ func Plot(data *timeseries.Data, outPath string) error {
 	}
 
 	return p.Save(vg.Length(width), 256, outPath)
+}
+
+func UnixTimeNanoIn(loc *time.Location) func(t float64) time.Time {
+	return func(t float64) time.Time {
+		return time.Unix(0, int64(t)).In(loc)
+	}
 }
 
 type NoneGlyph struct{}
