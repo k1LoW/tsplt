@@ -12,8 +12,7 @@ require (
 	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/testify v1.4.0 // indirect
 	golang.org/x/exp v0.0.0-20190912063710-ac5d2bfcbfe0 // indirect
-	golang.org/x/image v0.0.0-20190910094157-69e4b8554b2a // indirect
-	golang.org/x/sys v0.0.0-20190913121621-c3b328c6e5a7 // indirect
+	golang.org/x/image v0.5.0 // indirect
 	gonum.org/v1/gonum v0.0.0-20190915125329-975d99cd20a9 // indirect
 	gonum.org/v1/netlib v0.0.0-20190331212654-76723241ea4e // indirect
 	gonum.org/v1/plot v0.0.0-20190615073203-9aa86143727f
